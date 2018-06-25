@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by nydiarra on 06/05/17.
  */
 @Entity
-@Table(name="app_role")
+@Table(name="app_role", schema = "auth")
 public class Role {
     private static final long serialVersionUID = 1L;
     @Id

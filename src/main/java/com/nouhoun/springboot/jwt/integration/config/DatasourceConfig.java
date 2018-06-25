@@ -1,6 +1,9 @@
 package com.nouhoun.springboot.jwt.integration.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,6 +18,9 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -27,7 +33,13 @@ import java.beans.PropertyVetoException;
 @EnableJpaRepositories(basePackages = "com.nouhoun.springboot.jwt.integration.repository")
 public class DatasourceConfig {
 
+    /*
+    @Autowired
+    DataSource dataSource;
+    */
+    /*
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource datasource() throws PropertyVetoException {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase dataSource = builder
@@ -36,7 +48,10 @@ public class DatasourceConfig {
                 .addScript("sql-scripts/data.sql")
                 .build();
 
-        return dataSource;
+        // return dataSource;
+        // return ConnectionPoolsHk.getProcessing();
+        // return new HikariDataSource(this);
+        return DataSourceBuilder.create().build();
     }
 
     @Bean
@@ -55,4 +70,5 @@ public class DatasourceConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
+    */
 }

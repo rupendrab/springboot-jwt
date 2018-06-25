@@ -10,7 +10,7 @@ import java.util.List;
  * Created by nydiarra on 06/05/17.
  */
 @Entity
-@Table(name = "app_user")
+@Table(name = "app_user", schema = "auth")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class User {
      * they are a fairly small collection of items for this example.
      */
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns
+    @JoinTable(name = "user_role", schema = "auth", joinColumns
             = @JoinColumn(name = "user_id",
             referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id",

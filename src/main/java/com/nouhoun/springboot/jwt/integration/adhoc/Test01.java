@@ -1,10 +1,17 @@
 package com.nouhoun.springboot.jwt.integration.adhoc;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Test01
 {
-    public static void main(String[] args)
+    public static void testEncryption()
     {
         System.out.println("Start-1");
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -14,6 +21,10 @@ public class Test01
         System.out.println("Start-3");
         System.out.println(encoded);
         System.out.println("Start-4");
+    }
+    
+    public static void main(String[] args) throws Exception
+    {
     }
 
 }
